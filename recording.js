@@ -27,16 +27,11 @@ jQuery(document).ready(function () {
             { numChannels: 1 }
           );
           myRecorder.objects.recorder.record();
-
-          // Update button text and style
-          $("#recordButton")
-            .removeClass("btn-primary")
-            .addClass("btn-danger")
-            .text("Stop Recording");
-
           myRecorder.isRecording = true;
         })
-        .catch(function (err) {});
+        .catch(function (err) {
+          console.error('Error accessing microphone:', err);
+        });
     },
 
     stop: function (listObject) {
@@ -64,47 +59,31 @@ jQuery(document).ready(function () {
               .append(downloadObject);
 
             listObject.append(holderObject);
-
-            // Visualize the recorded audio using Wavesurfer.js
-            myRecorder.visualize(url);
           });
         }
       }
-
-      // Update button text and style
-      $("#recordButton")
-        .removeClass("btn-danger")
-        .addClass("btn-primary")
-        .text("Start Recording");
-
       myRecorder.isRecording = false;
-    },
-
-    visualize: function (url) {
-      var wavesurfer = WaveSurfer.create({
-        container: "#waveform",
-        waveColor: "violet",
-        progressColor: "purple",
-        height: 100,
-      });
-
-      wavesurfer.load(url);
     },
   };
 
   var listObject = $('[data-role="recordings"]');
 
-  $("#recordButton").click(function () {
+  $("#recordButton").on("click", function () {
+
     myRecorder.init();
 
-    var buttonState = !!$(this).attr("data-recording");
-
+    var buttonState = $(this).hasClass("btn-stop-recording");
+    console.log(buttonState);
     if (!buttonState) {
-      $(this).attr("data-recording", "true");
       myRecorder.start();
+      $(this).removeClass("btn-record").addClass("btn-stop-recording").text("Stop Recording");
     } else {
-      $(this).attr("data-recording", "");
       myRecorder.stop(listObject);
+      $(this).removeClass("btn-stop-recording").addClass("btn-record").text("Start Recording");
     }
   });
 });
+
+function refreshPage() {
+  location.reload();
+}
