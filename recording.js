@@ -97,9 +97,13 @@ jQuery(document).ready(function () {
   $("#recordButton").click(function () {
     myRecorder.init();
 
-    if (!myRecorder.isRecording) {
+    var buttonState = !!$(this).attr("data-recording");
+
+    if (!buttonState) {
+      $(this).attr("data-recording", "true");
       myRecorder.start();
     } else {
+      $(this).attr("data-recording", "");
       myRecorder.stop(listObject);
     }
   });
