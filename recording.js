@@ -76,10 +76,10 @@ jQuery(document).ready(function () {
     console.log(buttonState);
     if (!buttonState) {
       myRecorder.start();
-      $(this).removeClass("btn-record").addClass("btn-stop-recording").text("Stop Recording");
+      $(this).removeClass("btn-record").addClass("btn-stop-recording");
     } else {
       myRecorder.stop(listObject);
-      $(this).removeClass("btn-stop-recording").addClass("btn-record").text("Start Recording");
+      $(this).removeClass("btn-stop-recording").addClass("btn-record");
     }
   });
 });

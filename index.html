@@ -22,15 +22,25 @@
 
     <nav class="navbar border-bottom" data-bs-theme="dark">
         <div class="container-fluid">
-
           <a class="navbar-brand" onclick="refreshPage()"> <img src="./images/minilogo.png" alt="Logo" class="logo"/>TuneMIX</a>
+        </div>
     </nav>
 
-    <div class="container mt-4">
-      <div data-role="controls">
-        <button class="btn-record" id="recordButton">Nagraj głos!</button>
+    <div class="container">
+
+      <div class="row" data-role="controls">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="row" data-role="controls">
+            <div class="col-lg-6"><button class="btn-record" id="recordButton">Nagraj głos!</button></div>
+            <div class="col-lg-6"><button class="btn-upload" id="recordButton">Nagraj głos!</button></div>
+          </div>
+        </div>
+        <div class="col-md-4"></div>
       </div>
+
       <div data-role="recordings" class="mt-5"></div>
+
     </div>
 
     <script src="./recording.js"></script>
