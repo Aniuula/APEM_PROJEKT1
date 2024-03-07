@@ -1,136 +1,141 @@
 :root {
-    --darkgreen: #3f3369;
-    --lightgreen: #32a790;
-    --grey: #0c011544;
-  }
+  --darkgreen: #3f3369;
+  --lightgreen: #32a790;
+  --grey: #0c011544;
+}
 
-  body {
-    min-width: 400px;
-    background: linear-gradient(
-      to right,
-      var(--darkgreen),
-      var(--lightgreen)
-    );
-    margin: 0;
-    overflow: hidden;
-  }
+body {
+  min-width: 400px;
+  background: linear-gradient(to right, var(--darkgreen), var(--lightgreen));
+  margin: 0;
+  overflow: hidden;
+}
 
-  .navbar {
-    background: var(--grey);
-    border-bottom: 1px solid var(--lightgreen);
-  }
+.navbar {
+  background: var(--grey);
+  border-bottom: 1px solid var(--lightgreen);
+}
 
-  .bg {
-    position: absolute;
-    top: 5vh;
-    left: -30vw;
-    width: 70vw;
-    height: 100vh;
-    opacity: 50%;
-    z-index: -1;
-    overflow: hidden;
-  }
+.bg {
+  position: absolute;
+  top: 5vh;
+  left: -30vw;
+  width: 70vw;
+  height: 100vh;
+  opacity: 50%;
+  z-index: -1;
+  overflow: hidden;
+}
 
-  .bg__img--logo {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    user-select: none;
-  }
+.bg__img--logo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
 
-  .navbar-brand img {
-    max-height: 100%;
-  }
+.navbar-brand img {
+  max-height: 100%;
+}
 
-  .logo {
-    width: 30px;
-    height: 24px;
-    user-select: none;
-  }
+.logo {
+  width: 30px;
+  height: 24px;
+  user-select: none;
+}
 
- [data-role="recordings"] > .row {
-    width: 100%;
-    height: 100%;
-    padding: 5px;
-    flex-wrap: nowrap;
-    display: flex;
-    justify-content: flex-start;
- }
+[data-role="recordings"] > .row {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  flex-wrap: nowrap;
+  display: flex;
+  justify-content: flex-start;
+}
 
- [data-role="recordings"] > .row > a {
-    position: sticky;
-    display: inline-block;
-    text-align: center;
-    font-size: 20px;
-    line-height: 50px;
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
-    border-radius: 20px;
-    color: #fff;
-    font-weight: bold;
-    text-decoration: underline;
-    background-color: #0093e9;
-    background-image: -webkit-gradient(
-      linear,
-      left bottom,
-      left top,
-      from(#0093e9),
-      to(#80d0c7)
-    );
-    background-image: -o-linear-gradient(bottom, #0093e9 0%, #80d0c7 100%);
-    background-image: linear-gradient(0deg, #0093e9 0%, #80d0c7 100%);
-    margin-left: 20px;
-    cursor: pointer;
-  }
+[data-role="recordings"] > .row > a {
+  position: sticky;
+  display: inline-block;
+  text-align: center;
+  font-size: 20px;
+  line-height: 50px;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: underline;
+  background-color: #0093e9;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(#0093e9),
+    to(#80d0c7)
+  );
+  background-image: -o-linear-gradient(bottom, #0093e9 0%, #80d0c7 100%);
+  background-image: linear-gradient(0deg, #0093e9 0%, #80d0c7 100%);
+  margin-left: 20px;
+  cursor: pointer;
+}
 
-  [data-role="recordings"] > .row > a:hover {
-    text-decoration: none;
-  }
+[data-role="recordings"] > .row > a:hover {
+  text-decoration: none;
+}
 
-  [data-role="recordings"] > .row > a:active {
-    background-image: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(#0093e9),
-      to(#80d0c7)
-    );
-    background-image: -o-linear-gradient(top, #0093e9 0%, #80d0c7 100%);
-    background-image: linear-gradient(180deg, #0093e9 0%, #80d0c7 100%);
-  }
+[data-role="recordings"] > .row > a:active {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#0093e9),
+    to(#80d0c7)
+  );
+  background-image: -o-linear-gradient(top, #0093e9 0%, #80d0c7 100%);
+  background-image: linear-gradient(180deg, #0093e9 0%, #80d0c7 100%);
+}
+.btn-record::before {
+  content: ""; /* Empty content, we will use the background-image for the icon */
+  background-image: url("./images/minilogo.png"); /* Dodaj ścieżkę do twojej ikony mikrofonu */
+  background-size: cover; /* Dopasuj rozmiar ikony */
+  width: 70px; /* Adjust the width of the icon */
+  height: 55px; /* Adjust the height of the icon */
+  display: block;
+  margin: 10px auto; /* Adjust the margin to center the icon vertically */
+}
 
-  .btn-record {
-    margin: 75px auto;
+.btn-record {
+  margin: 75px auto;
 
-    display: block;
-    /*position: relative;*/
-    outline: none;
-    border: none;
-    background-color: #d9afd9;
-    background-image: -webkit-gradient(
-      linear,
-      left bottom,
-      left top,
-      from(#d9afd9),
-      to(#97d9e1)
-    );
-    background-image: -o-linear-gradient(bottom, #d9afd9 0%, #97d9e1 100%);
-    background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    text-indent: -1000em;
-    cursor: pointer;
-    -webkit-box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3) inset,
-      0px 0px 0px 30px #fff, 0px 0px 0px 35px #333;
-    box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3) inset, 0px 0px 0px 30px #fff,
-      0px 0px 0px 35px #333;
-  }
-  /*
+  display: block;
+  /*position: relative;*/
+  outline: none;
+  border: none;
+  background-color: #ffffff;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(#1a75ca),
+    to(#0f9456)
+  );
+  background-image: -o-linear-gradient(bottom, #6839d4 0%, #12cfe4 100%);
+  background-image: linear-gradient(0deg, #125ed1 0%, #6cd6e4 100%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  text-indent: -1000em;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3) inset,
+    0px 0px 0px 30px #fff, 0px 0px 0px 35px #333;
+  box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3) inset, 0px 0px 0px 30px #fff,
+    0px 0px 0px 35px #333;
+}
+/*
   .btn-record::after {
     content: '';
     display: block;
@@ -142,69 +147,86 @@
     border-color: transparent transparent transparent #333;
   }
   */
-  .btn-record:hover {
-    background-color: #ee7bee;
-    background-image: -webkit-gradient(
-      linear,
-      left bottom,
-      left top,
-      from(#ee7bee),
-      to(#6fe1f5)
-    );
-    background-image: -o-linear-gradient(bottom, #ee7bee 0%, #6fe1f5 100%);
-    background-image: linear-gradient(0deg, #ee7bee 0%, #6fe1f5 100%);
-  }
+.btn-record:hover {
+  background-color: #4317e2;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(#110eca),
+    to(#0c471b)
+  );
+  background-image: -o-linear-gradient(bottom, #1f8f09ab 0%, #40e497 100%);
+  background-image: linear-gradient(0deg, #52972b 0%, #89e752 100%);
+}
 
-  .btn-stop-recording {
-    margin: 75px auto;
-    outline: none;
-    display: block;
-    border: none;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    text-indent: -1000em;
-    cursor: pointer;
-    -webkit-box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3) inset,
-      0px 0px 0px 30px #fff, 0px 0px 0px 35px #333;
-    box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3) inset, 0px 0px 0px 30px #fff,
-      0px 0px 0px 35px #333;
-    background-color: #ff2038;
-    background-image: -webkit-gradient(
-      linear,
-      left bottom,
-      left top,
-      from(#ff2038),
-      to(#b30003)
-    );
-    background-image: -o-linear-gradient(bottom, #ff2038 0%, #b30003 100%);
-    background-image: linear-gradient(0deg, #ff2038 0%, #b30003 100%);
-  }
-  .btn-upload {
-    margin: 75px auto;
-    display: block;
-    border: none;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    text-indent: -1000em;
-    cursor: pointer;
-    -webkit-box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3) inset,
-      0px 0px 0px 30px #fff, 0px 0px 0px 35px #333;
-    box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3) inset, 0px 0px 0px 30px #fff,
-      0px 0px 0px 35px #333;
-  }
+.btn-stop-recording {
+  margin: 75px auto;
+  outline: none;
+  display: block;
+  border: none;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  text-indent: -1000em;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3) inset,
+    0px 0px 0px 30px #fff, 0px 0px 0px 35px #333;
+  box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3) inset, 0px 0px 0px 30px #fff,
+    0px 0px 0px 35px #333;
+  background-color: #e03042;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(#460a0b),
+    to(#f14a5a)
+  );
+  background-image: -o-linear-gradient(bottom, #ff2038 0%, #b30003 100%);
+  background-image: linear-gradient(0deg, #ff2038 0%, #b30003 100%);
+}
+.btn-upload::before {
+  content: ""; /* Empty content, we will use the background-image for the icon */
+  background-image: url("./images/pngwing.com\ \(1\).png"); /* Dodaj ścieżkę do twojej ikony mikrofonu */
+  background-size: cover; /* Dopasuj rozmiar ikony */
+  width: 50px; /* Adjust the width of the icon */
+  height: 60px; /* Adjust the height of the icon */
+  display: block;
+  margin: 14px auto; /* Adjust the margin to center the icon vertically */
+}
 
-  .upload-btn-wrapper input[type=file] {
-    opacity: 0;
-    position: absolute; /* Position the icon relative to the button */
-    left: 5px; /* Adjust this value to position the icon */
-    top: 50%; /* Align the icon vertically */
-    transform: translateY(-50%); /* Center the icon vertically */
-  }
-  .btn-upload svg {
-    position: fixed;
-    z-index: 2px;
-    width: 25px;
-    height: 25px;
+.btn-upload {
+  margin: 75px auto;
+  display: block;
+  outline: none;
+  border: none;
+  background-color: #ffffff;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(#1a75ca),
+    to(#0f9456)
+  );
+  background-image: -o-linear-gradient(bottom, #08685b 0%, #91cfc5 100%);
+  background-image: linear-gradient(0deg, #08685b 0%, #91cfc5 100%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  text-indent: -1000em;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3) inset,
+    0px 0px 0px 30px #fff, 0px 0px 0px 35px #333;
+  box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3) inset, 0px 0px 0px 30px #fff,
+    0px 0px 0px 35px #333;
+}
+/*
+
+
+
+.btn-upload svg {
+  position: fixed;
+  z-index: 2px;
+  width: 25px;
+  height: 25px;
 }
