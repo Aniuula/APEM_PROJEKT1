@@ -1,19 +1,26 @@
 document.getElementById('uploadButton').addEventListener('click', function() {
     document.getElementById('fileInput').click();
-  });
+});
 
-  document.getElementById('fileInput').addEventListener('change', function() {
-    const audioPlayer = document.getElementById('audioPlayer');
+var listObject = $('[data-role="recordings"]');
+
+document.getElementById('fileInput').addEventListener('change', function() {
+
     const file = this.files[0];
+
     if (file) {
-      const audio = document.createElement('audio');
-      audio.controls = true;
 
-      const source = document.createElement('source');
-      source.src = URL.createObjectURL(file);
-      source.type = 'audio/wav'; // Change the type based on your audio file format
+        var url = URL.createObjectURL(file);
+        var audioObject = $("<audio controls></audio>").attr("src", url);
 
-      audio.appendChild(source);
-      audioPlayer.appendChild(audio);
+        var downloadObject = $("<a>&#9660;</a>")
+            .attr("href", url)
+            .attr("download", new Date().toUTCString() + ".wav");
+
+        var holderObject = $('<div class="row"></div>')
+            .append(audioObject)
+            .append(downloadObject);
+
+        listObject.append(holderObject);
     }
-  });
+});
