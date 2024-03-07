@@ -30,7 +30,7 @@ jQuery(document).ready(function () {
           myRecorder.isRecording = true;
         })
         .catch(function (err) {
-          console.error('Error accessing microphone:', err);
+          console.error("Error accessing microphone:", err);
         });
     },
 
@@ -69,7 +69,6 @@ jQuery(document).ready(function () {
   var listObject = $('[data-role="recordings"]');
 
   $("#recordButton").on("click", function () {
-
     myRecorder.init();
 
     var buttonState = $(this).hasClass("btn-stop-recording");

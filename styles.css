@@ -99,13 +99,13 @@ body {
   background-image: linear-gradient(180deg, #0093e9 0%, #80d0c7 100%);
 }
 .btn-record::before {
-  content: ""; /* Empty content, we will use the background-image for the icon */
-  background-image: url("./images/minilogo.png"); /* Dodaj ścieżkę do twojej ikony mikrofonu */
-  background-size: cover; /* Dopasuj rozmiar ikony */
-  width: 70px; /* Adjust the width of the icon */
-  height: 55px; /* Adjust the height of the icon */
+  content: "";
+  background-image: url("./images/minilogo.png");
+  background-size: cover;
+  width: 70px;
+  height: 55px;
   display: block;
-  margin: 10px auto; /* Adjust the margin to center the icon vertically */
+  margin: 10px auto;
 }
 
 .btn-record {
@@ -186,13 +186,13 @@ body {
   background-image: linear-gradient(0deg, #ff2038 0%, #b30003 100%);
 }
 .btn-upload::before {
-  content: ""; /* Empty content, we will use the background-image for the icon */
-  background-image: url("./images/pngwing.com\ \(1\).png"); /* Dodaj ścieżkę do twojej ikony mikrofonu */
-  background-size: cover; /* Dopasuj rozmiar ikony */
-  width: 50px; /* Adjust the width of the icon */
-  height: 60px; /* Adjust the height of the icon */
+  content: "";
+  background-image: url("./images/upload.png");
+  background-size: cover;
+  width: 50px;
+  height: 60px;
   display: block;
-  margin: 14px auto; /* Adjust the margin to center the icon vertically */
+  margin: 14px auto;
 }
 
 .btn-upload {
@@ -229,4 +229,13 @@ body {
   z-index: 2px;
   width: 25px;
   height: 25px;
+}*/
+.visualization-bar {
+  height: 50px; /* Ustaw stałą wysokość dla paska wizualizacji */
+  overflow-x: auto; /* Dodaj poziome przewijanie dla długich nagrań */
+}
+
+.visualization-bar canvas {
+  display: inline-block;
+  vertical-align: top;
 }
