@@ -38,11 +38,7 @@
             </div>
             <div class="col-lg-6">
               <div class="upload-btn-wrapper">
-                <button class="btn-upload" id="uploadButton">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-                  </svg>
-                </button>
-                
+                <button class="btn-upload" id="uploadButton"></button>
                 <input type="file" name="uploadedImage" id="fileInput" style="display: none;"/>
               </div>
             </div>
@@ -56,28 +52,6 @@
     </div>
 
     <script src="./recording.js"></script>
-    <script>
-      document.getElementById('uploadButton').addEventListener('click', function() {
-        document.getElementById('fileInput').click();
-      });
-
-      document.getElementById('fileInput').addEventListener('change', function() {
-        const audioPlayer = document.getElementById('audioPlayer');
-        
-        const file = this.files[0];
-
-        if (file) {
-          const audio = document.createElement('audio');
-          audio.controls = true;
-
-          const source = document.createElement('source');
-          source.src = URL.createObjectURL(file);
-          source.type = 'audio/wav'; // Change the type based on your audio file format
-
-          audio.appendChild(source);
-          audioPlayer.appendChild(audio);
-        }
-      });
-    </script>
+    <script src="./uploading.js"></script>
   </body>
 </html>
