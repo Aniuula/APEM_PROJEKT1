@@ -194,3 +194,17 @@
     box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3) inset, 0px 0px 0px 30px #fff,
       0px 0px 0px 35px #333;
   }
+
+  .upload-btn-wrapper input[type=file] {
+    opacity: 0;
+    position: absolute; /* Position the icon relative to the button */
+    left: 5px; /* Adjust this value to position the icon */
+    top: 50%; /* Align the icon vertically */
+    transform: translateY(-50%); /* Center the icon vertically */
+  }
+  .btn-upload svg {
+    position: fixed;
+    z-index: 2px;
+    width: 25px;
+    height: 25px;
+}
