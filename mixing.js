@@ -21,7 +21,6 @@ function displayRecordedAudio() {
     }
 }
 
-// Call the function to display recorded audio when the page loads
 window.onload = function() {
     displayRecordedAudio();
 };

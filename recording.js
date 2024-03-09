@@ -56,7 +56,6 @@ jQuery(document).ready(function () {
               .attr("download", new Date().toUTCString() + ".wav");
             */
             var downloadObject = $("<a>&#9660;</a>")
-              /*.attr("href", '/mixing.html');*/
 
             var holderObject = $('<div class="row"></div>')
               .append(audioObject)
@@ -73,7 +72,6 @@ jQuery(document).ready(function () {
   var listObject = $('[data-role="recordings"]');
 
   listObject.on("click", "a", function (event) {
-    console.log("xd")
     event.preventDefault();
 
     var audioSrc = $(this).prev("audio").attr("src");
