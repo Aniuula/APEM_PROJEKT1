@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans");
 :root {
   --darkgreen: #3f3369;
   --lightgreen: #32a790;
@@ -55,43 +56,50 @@ body {
   display: inline-block;
   text-align: center;
   font-size: 20px;
-  line-height: 50px;
-  vertical-align: middle;
+  line-height: 40px;
+  vertical-align: bottom;
   width: 50px;
   height: 50px;
-  border-radius: 20px;
+  border-radius: 15px;
   color: #fff;
   font-weight: bold;
   text-decoration: underline;
-  background-color: #0093e9;
-  background-image: -webkit-gradient(
-    linear,
-    left bottom,
-    left top,
-    from(#0093e9),
-    to(#80d0c7)
-  );
-  background-image: -o-linear-gradient(bottom, #0093e9 0%, #80d0c7 100%);
-  background-image: linear-gradient(0deg, #0093e9 0%, #80d0c7 100%);
+  background-color: #051768;
   margin-left: 20px;
   cursor: pointer;
+  background: none;
 }
 
-[data-role="recordings"] > .row > a:hover {
-  text-decoration: none;
+[data-role="recordings"] > .row > a::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgb(9, 3, 85) 0%,
+    rgb(4, 87, 90) 100%
+  ); /* Ustawienie gradientu z drugiego bloku */
+  box-shadow: 0 4px 4px rgba(17, 17, 17, 0.3);
+  opacity: 0;
+  z-index: -1;
+  animation: pulse 2s infinite;
+}
+
+[data-role="recordings"] > .row > a:hover::before {
+  animation: none;
+  opacity: 0.6;
+  transform: scale(1.3);
 }
 
 [data-role="recordings"] > .row > a:active {
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#0093e9),
-    to(#80d0c7)
-  );
-  background-image: -o-linear-gradient(top, #0093e9 0%, #80d0c7 100%);
-  background-image: linear-gradient(180deg, #0093e9 0%, #80d0c7 100%);
+  background: linear-gradient(to bottom, gray 0%, dimgray 100%);
 }
+
 .btn-record::before {
   content: "";
   background-image: url("./images/minilogo.png");
@@ -211,4 +219,14 @@ body {
     0px 0px 0px 30px #fff, 0px 0px 0px 35px #333;
   box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.3) inset, 0px 0px 0px 30px #fff,
     0px 0px 0px 35px #333;
+}
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  to {
+    transform: scale(1.3);
+    opacity: 0;
+  }
 }
