@@ -4,20 +4,18 @@ function getQueryParam(name) {
     return urlParams.get(name);
 }
 
-// Function to display recorded audio
+var listObject = $('[data-role="recordings"]');
+
 function displayRecordedAudio() {
-    // Retrieve audio source URL from query parameter
+
     const audioSrc = getQueryParam('audioSrc');
 
     if (audioSrc) {
-        // Create an <audio> element
-        const audioElement = document.createElement('audio');
-        audioElement.src = decodeURIComponent(audioSrc);
-        audioElement.controls = true;
 
-        // Append the <audio> element to the container
-        const container = document.getElementById('recordedAudioContainer');
-        container.appendChild(audioElement);
+        var audioObject = $("<audio controls></audio>").attr("src", audioSrc);
+        var holderObject = $('<div class="row"></div>').append(audioObject)
+
+        listObject.append(holderObject);
     }
 }
 
