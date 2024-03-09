@@ -21,7 +21,7 @@ document.getElementById('fileInput').addEventListener('change', function() {
     var url = URL.createObjectURL(file);
     var audioObject = $("<audio controls></audio>").attr("src", url);
 
-    var downloadObject = $("<a>&#9660;</a>")/*
+    var downloadObject = $("<a><img src='./images/mixer.png style='width:42px;height:42px;'></a>")/*
         .attr("href", url)
         .attr("download", new Date().toUTCString() + ".wav");
 */

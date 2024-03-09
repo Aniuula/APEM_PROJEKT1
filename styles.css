@@ -65,7 +65,7 @@ body {
   font-weight: bold;
   text-decoration: underline;
   background-color: #051768;
-  margin-left: 20px;
+  margin-left: 15px;
   cursor: pointer;
   background: none;
 }
@@ -76,14 +76,14 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 50px;
+  height: 50px;
   border-radius: 20px;
   background: linear-gradient(
     to bottom,
     rgb(9, 3, 85) 0%,
     rgb(4, 87, 90) 100%
-  ); /* Ustawienie gradientu z drugiego bloku */
+  );
   box-shadow: 0 4px 4px rgba(17, 17, 17, 0.3);
   opacity: 0;
   z-index: -1;
@@ -93,11 +93,20 @@ body {
 [data-role="recordings"] > .row > a:hover::before {
   animation: none;
   opacity: 0.6;
-  transform: scale(1.3);
+  transform: scale(1.2);
 }
 
 [data-role="recordings"] > .row > a:active {
   background: linear-gradient(to bottom, gray 0%, dimgray 100%);
+}
+
+[data-role="recordings"] > .row > a > img {
+  width: 34px;
+  height: 34px;
+  position: absolute;
+  left: 9px;
+  top: 8px;
+  opacity: 80%;
 }
 
 .btn-record::before {

@@ -50,12 +50,8 @@ jQuery(document).ready(function () {
             var url = (window.URL || window.webkitURL).createObjectURL(blob);
 
             var audioObject = $("<audio controls></audio>").attr("src", url);
-            /*
-            var downloadObject = $("<a>&#9660;</a>")
-              .attr("href", url)
-              .attr("download", new Date().toUTCString() + ".wav");
-            */
-            var downloadObject = $("<a>&#9660;</a>");
+
+            var downloadObject = $("<a><img src='./images/mixer.png'></a>");
 
             var holderObject = $('<div class="row"></div>')
               .append(audioObject)
