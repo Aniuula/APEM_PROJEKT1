@@ -63,17 +63,27 @@ jQuery(document).ready(function () {
       }
       myRecorder.isRecording = false;
     },
+    edit: function (audioSrc) {
+      console.log("Editing:", audioSrc);
+    },
   };
 
   var listObject = $('[data-role="recordings"]');
+
+  listObject.on("click", ".edit-button", function () {
+    var audioSrc = $(this).closest(".row").find("audio").attr("src");
+    myRecorder.edit(audioSrc);
+  });
 
   listObject.on("click", "a", function (event) {
     event.preventDefault();
 
     var audioSrc = $(this).prev("audio").attr("src");
+    listObject.find("row").not(":has(.edit-button)").remove();
 
     window.location.href =
       "mixing.html?audioSrc=" + encodeURIComponent(audioSrc);
+    $("#recordButton, #uploadButton").removeClass("btn-record btn-upload");
   });
 
   $("#recordButton").on("click", function () {
