@@ -33,7 +33,6 @@ window.onload = function () {
   displayRecordedAudio();
   console.log(audioSrc);
 
-  // Load audio source when needed
   if (audioSrc) {
     ws.load(audioSrc);
   }
@@ -42,9 +41,7 @@ window.onload = function () {
     ws.play();
   });
 
-  // Set up the finish event listener
   ws.on("finish", () => {
-    // When the audio finishes, seek to the beginning and play again
     ws.seekTo(0);
     ws.play();
   });
@@ -54,13 +51,10 @@ function refreshPage() {
   window.location.href = "index.html";
 }
 
-// Function to play audio again using load()
 function playAgain() {
-  // Load audio source again before playing
   if (audioSrc) {
     ws.load(audioSrc);
   }
 
-  // Play the loaded audio
   ws.play();
 }
