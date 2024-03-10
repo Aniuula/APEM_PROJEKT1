@@ -1,4 +1,3 @@
-//recording.js
 jQuery(document).ready(function () {
   var $ = jQuery;
   var myRecorder = {
@@ -50,13 +49,10 @@ jQuery(document).ready(function () {
             var url = (window.URL || window.webkitURL).createObjectURL(blob);
 
             var audioObject = $("<audio controls></audio>").attr("src", url);
-
             var downloadObject = $("<a><img src='./images/mixer.png'></a>");
-
             var holderObject = $('<div class="row"></div>')
               .append(audioObject)
               .append(downloadObject);
-
             listObject.append(holderObject);
           });
         }
@@ -70,20 +66,11 @@ jQuery(document).ready(function () {
 
   var listObject = $('[data-role="recordings"]');
 
-  listObject.on("click", ".edit-button", function () {
-    var audioSrc = $(this).closest(".row").find("audio").attr("src");
+  listObject.on("click", ".row", function () {
+    var audioSrc = $(this).find("audio").attr("src");
     myRecorder.edit(audioSrc);
-  });
 
-  listObject.on("click", "a", function (event) {
-    event.preventDefault();
-
-    var audioSrc = $(this).prev("audio").attr("src");
-    listObject.find("row").not(":has(.edit-button)").remove();
-
-    window.location.href =
-      "mixing.html?audioSrc=" + encodeURIComponent(audioSrc);
-    $("#recordButton, #uploadButton").removeClass("btn-record btn-upload");
+    $("#recordButton, #uploadButton").remove();
   });
 
   $("#recordButton").on("click", function () {
@@ -102,5 +89,5 @@ jQuery(document).ready(function () {
 });
 
 function refreshPage() {
-  window.location.href = "index.html";
+  location.reload();
 }

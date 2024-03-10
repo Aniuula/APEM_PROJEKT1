@@ -79,11 +79,7 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 20px;
-  background: linear-gradient(
-    to bottom,
-    rgb(9, 3, 85) 0%,
-    rgb(4, 87, 90) 100%
-  );
+  background: linear-gradient(to bottom, rgb(9, 3, 85) 0%, rgb(4, 87, 90) 100%);
   box-shadow: 0 4px 4px rgba(17, 17, 17, 0.3);
   opacity: 0;
   z-index: -1;
