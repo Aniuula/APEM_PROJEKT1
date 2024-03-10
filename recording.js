@@ -80,7 +80,7 @@ jQuery(document).ready(function () {
     myRecorder.init();
 
     var buttonState = $(this).hasClass("btn-stop-recording");
-    console.log(buttonState);
+
     if (!buttonState) {
       myRecorder.start();
       $(this).removeClass("btn-record").addClass("btn-stop-recording");

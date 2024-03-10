@@ -8,37 +8,30 @@ function getQueryParam(name) {
 
 var listObject = $('[data-role="recordings"]');
 
-var audioSrc;
-
-function displayRecordedAudio() {
-  audioSrc = getQueryParam("audioSrc");
+async function displayRecordedAudio() {
+  const audioSrc = getQueryParam("audioSrc");
 
   if (audioSrc) {
     var audioObject = $("<audio controls></audio>").attr("src", audioSrc);
+
     var holderObject = $('<div class="row"></div>').append(audioObject);
     listObject.append(holderObject);
+
+    const ws = WaveSurfer.create({
+      container: "#waveform",
+      waveColor: "hotpink",
+      progressColor: "paleturquoise",
+      cursorColor: "#57BAB6",
+      cursorWidth: 4,
+      minPxPerSec: 100,
+    });
+
+    ws.load(audioSrc);
+
+    ws.on("interaction", () => {
+      ws.play();
+    });
   }
 }
 
-window.onload = function () {
-  displayRecordedAudio();
-  console.log(audioSrc);
-
-  const ws = WaveSurfer.create({
-    container: "#waveform",
-    waveColor: "hotpink",
-    progressColor: "paleturquoise",
-    cursorColor: "#57BAB6",
-    cursorWidth: 4,
-    minPxPerSec: 100,
-    url: audioSrc,
-  });
-
-  ws.on("interaction", () => {
-    ws.play();
-  });
-};
-
-function refreshPage() {
-  window.location.href = "index.html";
-}
+displayRecordedAudio();
