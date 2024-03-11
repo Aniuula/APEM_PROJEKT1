@@ -1,6 +1,5 @@
 import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
 import Hover from 'https://unpkg.com/wavesurfer.js/dist/plugins/hover.esm.js';
-import TimelinePlugin from 'https://unpkg.com/wavesurfer.js/dist/plugins/timeline.esm.js';
 import 'https://unpkg.com/wavesurfer-multitrack/dist/multitrack.min.js';
 
 function beginEditing(audioSrc){
@@ -8,23 +7,31 @@ function beginEditing(audioSrc){
     container_row.remove();
     const listObject = $('[data-role="recordings"]');
     listObject.remove();
-}
-
- function generateWaveSurfer(audioSrc){
     const container = $('body > div.container');
     container.append('<div id="buttons" style="margin: 2em 0">');
     const buttons = $('body > div.container > #buttons');
     buttons.append('<button id="play"><span class="material-icons">play_circle_outline</span></button></div>');
     container.append('<div id="waveform"></div>');
     container.append('<div id="container"></div>');
+}
+
+ function generateWaveSurfer(audioSrc){
+
+
     const multitrack = Multitrack.create(
       [
         {
             id: 0,
             draggable: true,
+            intro: {
+                label: 'Track1',
+                color: '#FFE56E',
+            },
             options: {
                 waveColor: 'hsl(46, 87%, 49%)',
                 progressColor: 'hsl(46, 87%, 20%)',
+                normalize: true,
+                minPxPerSec: 100,
             },
             url: audioSrc,
         },
@@ -38,7 +45,6 @@ function beginEditing(audioSrc){
         cursorWidth: 2,
         cursorColor: '#D72F21',
         trackBorderColor: '#7C7C7C',
-        minPxPerSec: 100,
       },
     )
 
@@ -58,10 +64,12 @@ function beginEditing(audioSrc){
                 url: audio.src,
                 draggable: true,
                 startPosition: 0,
+                normalize: true,
                 volume: 1,
                 options: {
+                    normalize: true,
+                    waveColor: "hotpink",
                     progressColor: "paleturquoise",
-                    cursorColor: "#57BAB6",
                 },
             });
         };
@@ -75,6 +83,7 @@ function beginEditing(audioSrc){
         cursorColor: "#57BAB6",
         cursorWidth: 4,
         minPxPerSec: 100,
+        normalize: true,
         plugins: [
             Hover.create({
               lineColor: '#ff0000',
@@ -102,6 +111,11 @@ function beginEditing(audioSrc){
             multitrack.isPlaying() ? multitrack.pause() : multitrack.play()
             document.querySelector("#play > span").textContent = multitrack.isPlaying() ? 'pause_circle_outline' : 'play_circle_outline'
         }
+    })
+
+    multitrack.on('finish', () => {
+        console.log('ended')
+        multitrack.setTime(0)
     })
  }
 
