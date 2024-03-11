@@ -59,19 +59,7 @@ jQuery(document).ready(function () {
       }
       myRecorder.isRecording = false;
     },
-    edit: function (audioSrc) {
-      console.log("Editing:", audioSrc);
-    },
   };
-
-  var listObject = $('[data-role="recordings"]');
-
-  listObject.on("click", ".row", function () {
-    var audioSrc = $(this).find("audio").attr("src");
-    myRecorder.edit(audioSrc);
-
-    $("#recordButton, #uploadButton").remove();
-  });
 
   $("#recordButton").on("click", function () {
     myRecorder.init();
