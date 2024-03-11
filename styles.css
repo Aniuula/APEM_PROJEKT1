@@ -268,3 +268,182 @@ body {
     box-shadow: 0px 0px 3em #000;
   }
 }
+
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+fieldset {
+  border: #7764A2 solid 0.2em;
+  border-radius: 0.5em;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  transition: border-color 0.25s linear;
+  margin: 40px 0px;
+}
+fieldset:hover {
+  border: #BBB solid 0.2em;
+}
+
+input[type=range] {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  width: 12%;
+  height: 12%;
+  border-radius: 0.25em;
+  border: 0.2em solid #242424;
+  background-color: #242424;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.2s linear;
+  box-shadow: 0 0 0 0 transparent;
+}
+input[type=range]:focus {
+  box-shadow: 0 0 0 0.1em #AAAAAA;
+}
+input[type=range]:hover {
+  box-shadow: 0 0 0 0.15em #7764A2;
+}
+
+input[type=range]{
+  transform: rotate(270deg);
+  margin: 4.5em -1.5em;
+  display: inline-block;
+}
+
+/* ## Slider components */
+/* ### Slider::-track */
+input[type=range]::-webkit-slider-runnable-track {
+  border: none;
+  background: none;
+  height: 100%;
+  width: 100%;
+}
+input[type=range]::-moz-range-track {
+  border: none;
+  background: none;
+  height: 100%;
+  width: 100%;
+}
+input[type=range]::-ms-track {
+  border: none;
+  background: none;
+  height: 100%;
+  width: 100%;
+}
+
+/* ### Slider::-thumb */
+input[type=range]::-webkit-slider-thumb {
+  margin: 0.05em;
+  padding: 0;
+  height: 0.9em;
+  width: 0.9em;
+  border-radius: 0.1em;
+  box-sizing: border-box;
+  border: none;
+  background-color: #6FC5F0;
+  box-shadow: -10em 0 0 0 #313131, -9em 0 0 0 #313131, -8em 0 0 0 #2F343F, -7em 0 0 0 #283F6B, -6em 0 0 0 #214893, -5em 0 0 0 #1A52BC, -4em 0 0 0 #2769D3, -3em 0 0 0 #3E87DC, -2em 0 0 0 #55A5E6, -1em 0 0 0 #6FC5F0, 1em 0 0 0 #181818, 2em 0 0 0 #181818, 3em 0 0 0 #181818, 4em 0 0 0 #181818, 5em 0 0 0 #181818, 6em 0 0 0 #181818, 7em 0 0 0 #181818, 8em 0 0 0 #181818, 9em 0 0 0 #181818;
+}
+input[type=range]::-moz-range-thumb {
+  margin: 0.05em;
+  padding: 0;
+  height: 0.9em;
+  width: 0.9em;
+  border-radius: 0.1em;
+  box-sizing: border-box;
+  border: none;
+  background-color: #6FC5F0;
+  box-shadow: -10em 0 0 0 #313131, -9em 0 0 0 #313131, -8em 0 0 0 #2F343F, -7em 0 0 0 #283F6B, -6em 0 0 0 #214893, -5em 0 0 0 #1A52BC, -4em 0 0 0 #2769D3, -3em 0 0 0 #3E87DC, -2em 0 0 0 #55A5E6, -1em 0 0 0 #6FC5F0, 1em 0 0 0 #181818, 2em 0 0 0 #181818, 3em 0 0 0 #181818, 4em 0 0 0 #181818, 5em 0 0 0 #181818, 6em 0 0 0 #181818, 7em 0 0 0 #181818, 8em 0 0 0 #181818, 9em 0 0 0 #181818;
+}
+input[type=range]::-ms-thumb {
+  margin: 0.05em;
+  padding: 0;
+  height: 0.9em;
+  width: 0.9em;
+  border-radius: 0.1em;
+  box-sizing: border-box;
+  border: none;
+  background-color: #6FC5F0;
+  box-shadow: -10em 0 0 0 #313131, -9em 0 0 0 #313131, -8em 0 0 0 #2F343F, -7em 0 0 0 #283F6B, -6em 0 0 0 #214893, -5em 0 0 0 #1A52BC, -4em 0 0 0 #2769D3, -3em 0 0 0 #3E87DC, -2em 0 0 0 #55A5E6, -1em 0 0 0 #6FC5F0, 1em 0 0 0 #181818, 2em 0 0 0 #181818, 3em 0 0 0 #181818, 4em 0 0 0 #181818, 5em 0 0 0 #181818, 6em 0 0 0 #181818, 7em 0 0 0 #181818, 8em 0 0 0 #181818, 9em 0 0 0 #181818;
+}
+
+input[type=range], input[type=range]::-webkit-slider-runnable-track, input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+input[type=range]::-ms-track {
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower, input[type=range]::-ms-fill-upper, input[type=range]::-ms-tooltip {
+  display: none;
+}
+
+/* Label *
+ * ====== */
+/* ## Label main element */
+label[type=range] {
+  display: block;
+  position: relative;
+  margin: 5px;
+  padding: 0;
+  font-size: inherit;
+  line-height: 0.6em;
+  width: 9.9em;
+  height: 1em;
+  border-radius: 0.25em;
+  color: #242424;
+  font-family: arial;
+  border: 0.2em solid transparent;
+  text-align: center;
+  border-bottom-color: #242424;
+  background-image: linear-gradient(#242424 calc(50% - .1em), #242424 calc(50% + .1em));
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: 0.2em 0.2em;
+  color: #999;
+}
+label[type=range]:first-letter {
+  top: 10px;
+  font-size: 0.8em;
+}
+label[type=range]::before, label[type=range]::after {
+  display: block;
+  position: absolute;
+  height: 1em;
+  line-height: 1em;
+  width: 1em;
+}
+
+label[type=range][orient="270deg"] {
+  border-bottom-color: transparent;
+  display: inline-block;
+  width: 1em;
+  height: 10em;
+  line-height: 10em;
+  vertical-align: top;
+}
+
+label[type=range][orient="270deg"] {
+  border-bottom-color: transparent;
+  border-right-color: #242424;
+  background-position: center right;
+  text-align: center;
+}
+label[type=range][orient="270deg"]::before {
+  content: attr(before);
+  bottom: -0.2em;
+  top: auto;
+  right: 0.5em;
+  left: auto;
+  text-align: right;
+}
+label[type=range][orient="270deg"]::after {
+  right: 0.2em;
+  bottom: auto;
+  top: -0.2em;
+  left: auto;
+  text-align: right;
+  content: attr(after);
+}

@@ -56,10 +56,8 @@ function beginEditing(){
 
     const audioContext = new AudioContext()
 
-    // Define the equalizer bands
     const eqBands = [32, 64, 125, 250, 500, 1000, 2000, 4000, 8000, 16000]
 
-    // Create a biquad filter for each band
     const filters = eqBands.map((band) => {
         const filter = audioContext.createBiquadFilter()
         filter.type = band <= 32 ? 'lowshelf' : band >= 16000 ? 'highshelf' : 'peaking'
@@ -69,7 +67,6 @@ function beginEditing(){
         return filter
     })
 
-    // Connect the audio to the equalizer
     audio.addEventListener('canplay',() => {
         // Create a MediaElementSourceNode from the audio element
         const mediaNode = audioContext.createMediaElementSource(audio)
@@ -84,22 +81,20 @@ function beginEditing(){
         equalizer.connect(audioContext.destination)
     },{ once: true },)
 
-    // Create a vertical slider for each band
-    const equalizer = document.createElement('equalizer')
+    const equalizer = document.createElement('fieldset');
+    $('body > div.container').append(equalizer);
+    $('body > div.container > fieldset').append('<label orient="270deg" type="range" for="band" before="-40" after="40">0</label>');
     filters.forEach((filter) => {
         const slider = document.createElement('input')
         slider.type = 'range'
-        slider.orient = 'vertical'
-        slider.style.appearance = 'slider-vertical'
-        slider.style.width = '10%'
+        slider.style.width = '11%'
         slider.min = -40
         slider.max = 40
         slider.value = filter.gain.value
-        slider.step = 0.1
+        slider.step = 1
         slider.oninput = (e) => (filter.gain.value = e.target.value)
         equalizer.appendChild(slider)
-    })
-    $('body > div.container').append(equalizer)
+    }) //https://www.sliderrevolution.com/resources/css-range-slider/
  }
 
 jQuery(document).ready(function () {
