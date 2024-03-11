@@ -235,3 +235,36 @@ body {
     opacity: 0;
   }
 }
+
+#waveform ::part(hover-label):before {
+  content: '⏱️ ';
+}
+
+#buttons{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+#play {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: #333;
+  display: grid;
+  place-content: center;
+  animation: grow 2s infinite;
+}
+#play > span{
+  content: "pause_circle_outline";
+  color: #eee;
+  font-size: 75px;
+}
+
+@keyframes grow {
+  from {
+    box-shadow: 0px 0px 1em #000;
+  }
+  to {
+    box-shadow: 0px 0px 3em #000;
+  }
+}

@@ -22,6 +22,10 @@
       src="https://code.jquery.com/jquery.min.js"
     ></script>
     <script src="https://markjivko.com/dist/recorder.js"></script>
+    <script type="module" src="https://unpkg.com/wavesurfer.js@7"></script>
+    <script src="https://unpkg.com/wavesurfer-multitrack/dist/multitrack.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   </head>
   <body>
     <div class="bg"></div>
@@ -29,7 +33,7 @@
     <nav class="navbar border-bottom" data-bs-theme="dark">
       <div class="container-fluid">
         <a class="navbar-brand" onclick="refreshPage()">
-          <img src="./images/minilogo.png" alt="Logo" class="logo" />TuneMIX</a
+          <img src="./images/minilogo.png" alt="Logo" class="logo">TuneMIX</a
         >
       </div>
     </nav>
@@ -63,5 +67,6 @@
 
     <script src="./recording.js"></script>
     <script src="./uploading.js"></script>
+    <script type="module" src="./mixing.js"></script>
   </body>
 </html>

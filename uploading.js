@@ -3,14 +3,6 @@ document.getElementById("uploadButton").addEventListener("click", function () {
 });
 
 var listObject = $('[data-role="recordings"]');
-/*
-listObject.on("click", "a", function (event) {
-  event.preventDefault();
-
-  var audioSrc = $(this).prev("audio").attr("src");
-
-  window.location.href = "edit.html?audioSrc=" + encodeURIComponent(audioSrc);
-});*/
 
 document.getElementById("fileInput").addEventListener("change", function () {
   const file = this.files[0];
