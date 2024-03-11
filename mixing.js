@@ -1,4 +1,5 @@
 import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
+import Hover from 'https://unpkg.com/wavesurfer.js/dist/plugins/hover.esm.js'
 
 function beginEditing(audioSrc){
     console.log("Editing:", audioSrc);
@@ -24,6 +25,15 @@ function beginEditing(audioSrc){
         cursorColor: "#57BAB6",
         cursorWidth: 4,
         minPxPerSec: 100,
+        plugins: [
+            Hover.create({
+              lineColor: '#ff0000',
+              lineWidth: 2,
+              labelBackground: '#555',
+              labelColor: '#fff',
+              labelSize: '11px',
+            }),
+          ],
       });
 
     ws.load(audioSrc);
