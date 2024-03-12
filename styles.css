@@ -142,8 +142,8 @@ body {
 }
 
 .btn-record:hover {
-  background-image: -o-linear-gradient(bottom, #7b3985 0%, #c92b5f 100%);
-  background-image: linear-gradient(0deg, #7b3985 0%, #c92b5f 100%);
+  background-image: -o-linear-gradient(bottom, #7b3985 0%, #c274bf 100%);
+  background-image: linear-gradient(0deg, #7b3985 0%, #c274bf 100%);
 }
 
 .btn-stop-recording {
@@ -192,11 +192,11 @@ body {
     linear,
     left bottom,
     left top,
-    from(#3199bc),
-    to(#89cef9)
+    from(#003052),
+    to(#95cd99)
   );
-  background-image: -o-linear-gradient(bottom, #3199bc 0%, #89cef9 100%);
-  background-image: linear-gradient(0deg, #3199bc 0%, #89cef9 100%);
+  background-image: -o-linear-gradient(bottom, #003052 0%, #95cd99 100%);
+  background-image: linear-gradient(0deg, #003052 0%, #95cd99 100%);
   width: 100px;
   height: 100px;
   border-radius: 50%;
