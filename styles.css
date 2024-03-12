@@ -271,7 +271,7 @@ body {
 
 @import url(https://fonts.googleapis.com/css?family=Lobster);
 equalizer {
-  border: #7764A2 solid 0.2em;
+  border: #7764a2 solid 0.2em;
   border-radius: 0.5em;
   display: inline-block;
   text-align: center;
@@ -281,7 +281,7 @@ equalizer {
   margin: 40px 0px 0px 0px;
 }
 equalizer:hover {
-  border: #BBB solid 0.2em;
+  border: #bbb solid 0.2em;
 }
 
 fieldset {
@@ -294,11 +294,9 @@ fieldset {
   transition: border-color 0.25s linear;
   margin: 20px 0px 0px 0px;
 }
+
 fieldset:hover {
   border: #bbb solid 0.2em;
-
-fieldset:hover{
-  border: #BBB solid 0.2em;
 }
 
 input[type="range"] {
@@ -487,6 +485,7 @@ label[type="range"][orient="270deg"]::before {
   left: auto;
   text-align: right;
 }
+
 label[type="range"][orient="270deg"]::after {
   right: 0.3em;
   bottom: auto;
