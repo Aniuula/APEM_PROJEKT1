@@ -300,7 +300,7 @@ fieldset:hover {
 }
 
 legend {
-  font-size: 1.8em;
+  font-size: 1.6em;
   font-family: "Lobster", sans-serif;
   padding-left: 0.3em;
   padding-right: 0.2em;
@@ -369,7 +369,7 @@ input[type="range"]::-webkit-slider-thumb {
   box-sizing: border-box;
   border: none;
   background-color: #8c6cb3;
-  box-shadow: -10em 0 0 0 #313131, -9em 0 0 0 #313131, -8em 0 0 0 #2f343f,
+  box-shadow: -10em 0 0 0 #5908bb, -9em 0 0 0 #5d10bb, -8em 0 0 0 #6218bc,
     -7em 0 0 0 #631eb7, -6em 0 0 0 #6929b7, -5em 0 0 0 #6c32b3,
     -4em 0 0 0 #713bb3, -3em 0 0 0 #7746b2, -2em 0 0 0 #7b4fb2,
     -1em 0 0 0 #7f57b1, 1em 0 0 0 #181818, 2em 0 0 0 #181818, 3em 0 0 0 #181818,
