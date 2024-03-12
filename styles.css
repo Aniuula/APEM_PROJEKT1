@@ -9,7 +9,7 @@ body {
   min-width: 400px;
   background: linear-gradient(to right, var(--darkgreen), var(--lightgreen));
   margin: 0;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .navbar {
@@ -297,6 +297,14 @@ fieldset {
 
 fieldset:hover {
   border: #bbb solid 0.2em;
+}
+
+legend {
+  font-size: 1.8em;
+  font-family: "Lobster", sans-serif;
+  padding-left: 0.3em;
+  padding-right: 0.2em;
+  color: #7338ab;
 }
 
 input[type="range"] {

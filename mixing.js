@@ -84,6 +84,7 @@ function generateEqualizer(audio){
 
     const equalizer = document.createElement('equalizer');
     $('body > div.container').append(equalizer);
+    $('body > div.container > equalizer').append('<legend>Equalizer</legend>');
     $('body > div.container > equalizer').append('<label orient="270deg" type="range" for="band" before="-40" after="40">0</label>');
     filters.forEach((filter) => {
         const slider = document.createElement('input')
@@ -101,6 +102,8 @@ function generateEqualizer(audio){
 function generateOtherOptions(audio) {
     const fieldset = document.createElement('fieldset');
     $('body > div.container').append(fieldset);
+    $('body > div.container > fieldset').append('<legend>Speed      Volume</legend>');
+
     const speedSlider = document.createElement('input');
     $('body > div.container > fieldset').append('<label orient="270deg" type="range" for="band" before="0.25" after="2">1</label>');
     speedSlider.type = 'range'
