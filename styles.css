@@ -270,6 +270,20 @@ body {
 }
 
 @import url(https://fonts.googleapis.com/css?family=Lobster);
+equalizer {
+  border: #7764A2 solid 0.2em;
+  border-radius: 0.5em;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  transition: border-color 0.25s linear;
+  margin: 40px 0px 0px 0px;
+}
+equalizer:hover {
+  border: #BBB solid 0.2em;
+}
+
 fieldset {
   border: #7764a2 solid 0.2em;
   border-radius: 0.5em;
@@ -278,10 +292,13 @@ fieldset {
   width: 100%;
   position: relative;
   transition: border-color 0.25s linear;
-  margin: 40px 0px;
+  margin: 20px 0px 0px 0px;
 }
 fieldset:hover {
   border: #bbb solid 0.2em;
+
+fieldset:hover{
+  border: #BBB solid 0.2em;
 }
 
 input[type="range"] {
@@ -290,6 +307,7 @@ input[type="range"] {
   padding: 0;
   font-size: inherit;
   width: 12%;
+  min-width: 40px;
   height: 12%;
   border-radius: 0.25em;
   border: 0.2em solid #242424;
@@ -428,7 +446,9 @@ label[type="range"] {
 }
 label[type="range"]:first-letter {
   top: 10px;
-  font-size: 0.8em;
+  left: 10px;
+  margin: -3px;
+  font-size: 0.9em;
 }
 label[type="range"]::before,
 label[type="range"]::after {
@@ -440,6 +460,10 @@ label[type="range"]::after {
 }
 
 label[type="range"][orient="270deg"] {
+  border-bottom-color: transparent;
+  border-right-color: #242424;
+  background-position: center right;
+  text-align: left;
   border-bottom-color: transparent;
   display: inline-block;
   width: 1em;
@@ -453,17 +477,18 @@ label[type="range"][orient="270deg"] {
   border-right-color: #242424;
   background-position: center right;
   text-align: center;
+  vertical-align: center;
 }
 label[type="range"][orient="270deg"]::before {
   content: attr(before);
   bottom: -0.2em;
   top: auto;
-  right: 0.5em;
+  right: 0.7em;
   left: auto;
   text-align: right;
 }
 label[type="range"][orient="270deg"]::after {
-  right: 0.2em;
+  right: 0.3em;
   bottom: auto;
   top: -0.2em;
   left: auto;

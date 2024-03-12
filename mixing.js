@@ -1,6 +1,5 @@
 import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
 import Hover from 'https://unpkg.com/wavesurfer.js/dist/plugins/hover.esm.js';
-import 'https://unpkg.com/wavesurfer-multitrack/dist/multitrack.min.js';
 
 function beginEditing(){
     const container_row = $('body > div.container > div.row');
@@ -14,8 +13,10 @@ function beginEditing(){
     container.append('<div id="waveform"></div>');
 }
 
- function generateWaveSurfer(audio){
-    const ws = WaveSurfer.create({
+var ws;
+
+function generateWaveSurfer(audio){
+    ws = WaveSurfer.create({
         container: "#waveform",
         waveColor: "#7764A2",
         progressColor: "paleturquoise",
@@ -52,7 +53,7 @@ function beginEditing(){
     }
  }
 
- function generateEqualizer(audio){
+function generateEqualizer(audio){
 
     const audioContext = new AudioContext()
 
@@ -81,9 +82,9 @@ function beginEditing(){
         equalizer.connect(audioContext.destination)
     },{ once: true },)
 
-    const equalizer = document.createElement('fieldset');
+    const equalizer = document.createElement('equalizer');
     $('body > div.container').append(equalizer);
-    $('body > div.container > fieldset').append('<label orient="270deg" type="range" for="band" before="-40" after="40">0</label>');
+    $('body > div.container > equalizer').append('<label orient="270deg" type="range" for="band" before="-40" after="40">0</label>');
     filters.forEach((filter) => {
         const slider = document.createElement('input')
         slider.type = 'range'
@@ -97,6 +98,32 @@ function beginEditing(){
     }) //https://www.sliderrevolution.com/resources/css-range-slider/
  }
 
+function generateOtherOptions(audio) {
+    const fieldset = document.createElement('fieldset');
+    $('body > div.container').append(fieldset);
+    const speedSlider = document.createElement('input');
+    $('body > div.container > fieldset').append('<label orient="270deg" type="range" for="band" before="0.25" after="2">1</label>');
+    speedSlider.type = 'range'
+    speedSlider.style.width = '11%'
+    speedSlider.min = 0.25
+    speedSlider.max = 2
+    speedSlider.value = 1
+    speedSlider.step = 0.25
+    speedSlider.oninput = (e) => (ws.setPlaybackRate(e.target.value))
+    fieldset.appendChild(speedSlider)
+
+    const volumeSlider = document.createElement('input');
+    $('body > div.container > fieldset').append('<label orient="270deg" type="range" for="band" before="0" after="2">1</label>');
+    volumeSlider.type = 'range'
+    volumeSlider.style.width = '11%'
+    volumeSlider.min = 0
+    volumeSlider.max = 2
+    volumeSlider.value = 1
+    volumeSlider.step = 0.1
+    volumeSlider.oninput = (e) => (ws.setVolume(e.target.value))
+    fieldset.appendChild(volumeSlider)
+}
+
 jQuery(document).ready(function () {
     var listObject = $('[data-role="recordings"]');
 
@@ -109,6 +136,7 @@ jQuery(document).ready(function () {
         beginEditing();
         generateWaveSurfer(audio);
         generateEqualizer(audio);
+        generateOtherOptions(audio);
     });
 });
 
