@@ -89,7 +89,6 @@ function generateEqualizer(audio){
     filters.forEach((filter) => {
         const slider = document.createElement('input')
         slider.type = 'range'
-        slider.style.width = '11%'
         slider.min = -40
         slider.max = 40
         slider.value = filter.gain.value
@@ -116,11 +115,11 @@ function generateOtherOptions(audio) {
     fieldset.appendChild(speedSlider)
 
     const volumeSlider = document.createElement('input');
-    $('body > div.container > fieldset').append('<label orient="270deg" type="range" for="band" before="0" after="2">1</label>');
+    $('body > div.container > fieldset').append('<label orient="270deg" type="range" for="band" before="0" after="1">0.5</label>');
     volumeSlider.type = 'range'
     volumeSlider.style.width = '11%'
     volumeSlider.min = 0
-    volumeSlider.max = 2
+    volumeSlider.max = 1
     volumeSlider.value = 1
     volumeSlider.step = 0.1
     volumeSlider.oninput = (e) => (ws.setVolume(e.target.value))

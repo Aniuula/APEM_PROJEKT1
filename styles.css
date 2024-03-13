@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans");
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
 :root {
   --darkgreen: #3f3369;
   --lightgreen: #32a790;
@@ -9,7 +11,12 @@ body {
   min-width: 400px;
   background: linear-gradient(to right, var(--darkgreen), var(--lightgreen));
   margin: 0;
+  position: relative;
   overflow: auto;
+}
+
+body::-webkit-scrollbar {
+  width: 0px;
 }
 
 .navbar {
@@ -245,9 +252,10 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 #play {
-  height: 100px;
-  width: 100px;
+  height: 6em;
+  width: 6em;
   border-radius: 50%;
   background-color: #333;
   display: grid;
@@ -269,7 +277,6 @@ body {
   }
 }
 
-@import url(https://fonts.googleapis.com/css?family=Lobster);
 equalizer {
   border: #7764a2 solid 0.2em;
   border-radius: 0.5em;
@@ -278,7 +285,7 @@ equalizer {
   width: 100%;
   position: relative;
   transition: border-color 0.25s linear;
-  margin: 40px 0px 0px 0px;
+  margin: 0.7em 0px 0px 0px;
 }
 equalizer:hover {
   border: #bbb solid 0.2em;
@@ -292,7 +299,7 @@ fieldset {
   width: 100%;
   position: relative;
   transition: border-color 0.25s linear;
-  margin: 20px 0px 0px 0px;
+  margin: 0.7em 0px 0px 0px;
 }
 
 fieldset:hover {
@@ -305,15 +312,13 @@ legend {
   padding-left: 0.3em;
   padding-right: 0.2em;
   color: #7338ab;
+  margin: 0;
 }
 
 input[type="range"] {
-  display: block;
-  margin: 0;
-  padding: 0;
   font-size: inherit;
-  width: 12%;
-  min-width: 40px;
+  width: 13%;
+  min-width: 75px;
   height: 12%;
   border-radius: 0.25em;
   border: 0.2em solid #242424;
@@ -384,11 +389,11 @@ input[type="range"]::-moz-range-thumb {
   border-radius: 0.1em;
   box-sizing: border-box;
   border: none;
-  background-color: #6fc5f0;
-  box-shadow: -10em 0 0 0 #313131, -9em 0 0 0 #313131, -8em 0 0 0 #2f343f,
-    -7em 0 0 0 #283f6b, -6em 0 0 0 #214893, -5em 0 0 0 #1a52bc,
-    -4em 0 0 0 #2769d3, -3em 0 0 0 #3e87dc, -2em 0 0 0 #55a5e6,
-    -1em 0 0 0 #6fc5f0, 1em 0 0 0 #181818, 2em 0 0 0 #181818, 3em 0 0 0 #181818,
+  background-color: #8c6cb3;
+  box-shadow: -10em 0 0 0 #5908bb, -9em 0 0 0 #5d10bb, -8em 0 0 0 #6218bc,
+    -7em 0 0 0 #631eb7, -6em 0 0 0 #6929b7, -5em 0 0 0 #6c32b3,
+    -4em 0 0 0 #713bb3, -3em 0 0 0 #7746b2, -2em 0 0 0 #7b4fb2,
+    -1em 0 0 0 #7f57b1, 1em 0 0 0 #181818, 2em 0 0 0 #181818, 3em 0 0 0 #181818,
     4em 0 0 0 #181818, 5em 0 0 0 #181818, 6em 0 0 0 #181818, 7em 0 0 0 #181818,
     8em 0 0 0 #181818, 9em 0 0 0 #181818;
 }
@@ -400,11 +405,11 @@ input[type="range"]::-ms-thumb {
   border-radius: 0.1em;
   box-sizing: border-box;
   border: none;
-  background-color: #6fc5f0;
-  box-shadow: -10em 0 0 0 #313131, -9em 0 0 0 #313131, -8em 0 0 0 #2f343f,
-    -7em 0 0 0 #283f6b, -6em 0 0 0 #214893, -5em 0 0 0 #1a52bc,
-    -4em 0 0 0 #2769d3, -3em 0 0 0 #3e87dc, -2em 0 0 0 #55a5e6,
-    -1em 0 0 0 #6fc5f0, 1em 0 0 0 #181818, 2em 0 0 0 #181818, 3em 0 0 0 #181818,
+  background-color: #8c6cb3;
+  box-shadow: -10em 0 0 0 #5908bb, -9em 0 0 0 #5d10bb, -8em 0 0 0 #6218bc,
+    -7em 0 0 0 #631eb7, -6em 0 0 0 #6929b7, -5em 0 0 0 #6c32b3,
+    -4em 0 0 0 #713bb3, -3em 0 0 0 #7746b2, -2em 0 0 0 #7b4fb2,
+    -1em 0 0 0 #7f57b1, 1em 0 0 0 #181818, 2em 0 0 0 #181818, 3em 0 0 0 #181818,
     4em 0 0 0 #181818, 5em 0 0 0 #181818, 6em 0 0 0 #181818, 7em 0 0 0 #181818,
     8em 0 0 0 #181818, 9em 0 0 0 #181818;
 }
@@ -432,10 +437,6 @@ label[type="range"] {
   margin: 5px;
   padding: 0;
   font-size: inherit;
-  line-height: 0.6em;
-  width: 9.9em;
-  height: 1em;
-  border-radius: 0.25em;
   color: #242424;
   font-family: arial;
   border: 0.2em solid transparent;
@@ -473,18 +474,11 @@ label[type="range"][orient="270deg"] {
   border-bottom-color: transparent;
   display: inline-block;
   width: 1em;
-  height: 10em;
+  height: 11%;
   line-height: 10em;
-  vertical-align: top;
-}
-
-label[type="range"][orient="270deg"] {
-  border-bottom-color: transparent;
-  border-right-color: #242424;
-  background-position: center right;
-  text-align: center;
   vertical-align: center;
 }
+
 label[type="range"][orient="270deg"]::before {
   content: attr(before);
   bottom: -0.2em;
