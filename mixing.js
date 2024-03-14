@@ -1,7 +1,9 @@
 import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
 import Hover from 'https://unpkg.com/wavesurfer.js/dist/plugins/hover.esm.js';
 
-function beginEditing(audioSrc){
+var ws;
+
+function beginEditing(){
     const container_row = $('body > div.container > div.row');
     container_row.remove();
 
@@ -24,25 +26,15 @@ function beginEditing(audioSrc){
     buttons.append(downloadButton);
     container.append('<div id="waveform"></div>');
     downloadButton.onclick = () => {
-        fetch(audioSrc)
-        .then(response => response.blob())
-        .then(blob => {
-            var url = URL.createObjectURL(blob);
-            var link = document.createElement('a');
-            link.href = url;
-            link.download = 'audio_file.wav';
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        })
-        .catch(error => {
-            console.error('Error downloading audio:', error);
-        });
+        var link = document.createElement('a');
+        link.href = ws.getMediaElement().src;
+        link.download = 'audio_file.wav';
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 }
-
-var ws;
 
 function generateWaveSurfer(audio){
     ws = WaveSurfer.create({
@@ -175,8 +167,6 @@ function generateOtherOptions() {
     volumeContainer.appendChild(volumeValueSpan);
 }
 
-
-
 jQuery(document).ready(function () {
     var listObject = $('[data-role="recordings"]');
 
@@ -186,7 +176,7 @@ jQuery(document).ready(function () {
         audio.controls = true;
         audio.src = audioSrc;
 
-        beginEditing(audioSrc);
+        beginEditing();
         generateWaveSurfer(audio);
         generateEqualizer(audio);
         generateOtherOptions();
