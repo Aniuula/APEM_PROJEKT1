@@ -84,19 +84,22 @@ function generateEqualizer(audio){
     $('body > div.container > equalizer').append('<legend>Equalizer</legend>');
     const divSlider = document.createElement('div-slider');
 
-    //$('body > div.container > equalizer').append('<label orient="270deg" type="range" for="band" before="-40" after="40">0</label>');
-    filters.forEach((filter) => {
-        var sliderContainer = document.createElement('slider-with-text');
-        var sliderText = document.createElement('span')
+    $('body > div.container > equalizer').append('<label orient="270deg" type="range" for="band" before="-40" after="40">0</label>');
+    eqBands.forEach((band, index) => {
         const slider = document.createElement('input')
         slider.type = 'range'
         slider.min = -40
         slider.max = 40
-        slider.value = filter.gain.value
+        slider.value = filters[index].gain.value
         slider.step = 1
-        slider.oninput = (e) => (filter.gain.value = e.target.value)
+        slider.oninput = (e) => (filters[index].gain.value = e.target.value);
+
+        const sliderContainer = document.createElement('slider-with-text');
         sliderContainer.appendChild(slider)
-        sliderText.textContent = 32
+
+        const sliderText = document.createElement('span')
+        sliderText.textContent = band
+
         sliderContainer.appendChild(sliderText)
         divSlider.appendChild(sliderContainer)
     })
@@ -106,7 +109,7 @@ function generateEqualizer(audio){
  function generateOtherOptions() {
     const fieldset = document.createElement('fieldset');
     $('body > div.container').append(fieldset);
-    $('body > div.container > fieldset').append('<legend>Speed  Volume</legend>');
+    $('body > div.container > fieldset').append('<legend>Options</legend>');
     const divSlider = document.createElement('div-slider');
     const speedContainer = document.createElement('slider-with-text');
     divSlider.appendChild(speedContainer);
@@ -122,7 +125,7 @@ function generateEqualizer(audio){
     speedContainer.appendChild(speedSlider);
 
     const speedValueSpan = document.createElement('span');
-    speedValueSpan.textContent = speedSlider.value;
+    speedValueSpan.textContent = 'Speed';
     speedContainer.appendChild(speedValueSpan);
 
     const volumeContainer = document.createElement('slider-with-text');
@@ -139,7 +142,7 @@ function generateEqualizer(audio){
     volumeContainer.appendChild(volumeSlider);
 
     const volumeValueSpan = document.createElement('span');
-    volumeValueSpan.textContent = volumeSlider.value;
+    volumeValueSpan.textContent = 'Volume';
     volumeContainer.appendChild(volumeValueSpan);
 }
 
