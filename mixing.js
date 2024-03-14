@@ -63,30 +63,31 @@ function generateEqualizer(audio){
         const filter = audioContext.createBiquadFilter()
         filter.type = band <= 32 ? 'lowshelf' : band >= 16000 ? 'highshelf' : 'peaking'
         filter.gain.value = Math.random() * 40 - 20
-        filter.Q.value = 1 // resonance
-        filter.frequency.value = band // the cut-off frequency
+        filter.Q.value = 1
+        filter.frequency.value = band
         return filter
     })
 
     audio.addEventListener('canplay',() => {
-        // Create a MediaElementSourceNode from the audio element
         const mediaNode = audioContext.createMediaElementSource(audio)
 
-        // Connect the filters and media node sequentially
         const equalizer = filters.reduce((prev, curr) => {
             prev.connect(curr)
             return curr
         }, mediaNode)
 
-        // Connect the filters to the audio output
         equalizer.connect(audioContext.destination)
     },{ once: true },)
 
     const equalizer = document.createElement('equalizer');
     $('body > div.container').append(equalizer);
     $('body > div.container > equalizer').append('<legend>Equalizer</legend>');
-    $('body > div.container > equalizer').append('<label orient="270deg" type="range" for="band" before="-40" after="40">0</label>');
+    const divSlider = document.createElement('div-slider');
+
+    //$('body > div.container > equalizer').append('<label orient="270deg" type="range" for="band" before="-40" after="40">0</label>');
     filters.forEach((filter) => {
+        var sliderContainer = document.createElement('slider-with-text');
+        var sliderText = document.createElement('span')
         const slider = document.createElement('input')
         slider.type = 'range'
         slider.min = -40
@@ -94,37 +95,55 @@ function generateEqualizer(audio){
         slider.value = filter.gain.value
         slider.step = 1
         slider.oninput = (e) => (filter.gain.value = e.target.value)
-        equalizer.appendChild(slider)
-    }) //https://www.sliderrevolution.com/resources/css-range-slider/
+        sliderContainer.appendChild(slider)
+        sliderText.textContent = 32
+        sliderContainer.appendChild(sliderText)
+        divSlider.appendChild(sliderContainer)
+    })
+    equalizer.appendChild(divSlider)
  }
 
-function generateOtherOptions(audio) {
+ function generateOtherOptions() {
     const fieldset = document.createElement('fieldset');
     $('body > div.container').append(fieldset);
     $('body > div.container > fieldset').append('<legend>Speed  Volume</legend>');
+    const divSlider = document.createElement('div-slider');
+    const speedContainer = document.createElement('slider-with-text');
+    divSlider.appendChild(speedContainer);
+    fieldset.appendChild(divSlider);
 
     const speedSlider = document.createElement('input');
-    $('body > div.container > fieldset').append('<label orient="270deg" type="range" for="band" before="0.25" after="2">1</label>');
     speedSlider.type = 'range'
-    speedSlider.style.width = '11%'
     speedSlider.min = 0.25
     speedSlider.max = 2
     speedSlider.value = 1
     speedSlider.step = 0.25
     speedSlider.oninput = (e) => (ws.setPlaybackRate(e.target.value))
-    fieldset.appendChild(speedSlider)
+    speedContainer.appendChild(speedSlider);
+
+    const speedValueSpan = document.createElement('span');
+    speedValueSpan.textContent = speedSlider.value;
+    speedContainer.appendChild(speedValueSpan);
+
+    const volumeContainer = document.createElement('slider-with-text');
+    divSlider.appendChild(volumeContainer);
+    fieldset.appendChild(divSlider);
 
     const volumeSlider = document.createElement('input');
-    $('body > div.container > fieldset').append('<label orient="270deg" type="range" for="band" before="0" after="1">0.5</label>');
     volumeSlider.type = 'range'
-    volumeSlider.style.width = '11%'
     volumeSlider.min = 0
     volumeSlider.max = 1
     volumeSlider.value = 1
     volumeSlider.step = 0.1
     volumeSlider.oninput = (e) => (ws.setVolume(e.target.value))
-    fieldset.appendChild(volumeSlider)
+    volumeContainer.appendChild(volumeSlider);
+
+    const volumeValueSpan = document.createElement('span');
+    volumeValueSpan.textContent = volumeSlider.value;
+    volumeContainer.appendChild(volumeValueSpan);
 }
+
+
 
 jQuery(document).ready(function () {
     var listObject = $('[data-role="recordings"]');
@@ -138,7 +157,7 @@ jQuery(document).ready(function () {
         beginEditing();
         generateWaveSurfer(audio);
         generateEqualizer(audio);
-        generateOtherOptions(audio);
+        generateOtherOptions();
     });
 });
 
