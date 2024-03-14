@@ -1,16 +1,45 @@
 import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
 import Hover from 'https://unpkg.com/wavesurfer.js/dist/plugins/hover.esm.js';
 
-function beginEditing(){
+function beginEditing(audioSrc){
     const container_row = $('body > div.container > div.row');
     container_row.remove();
+
     const listObject = $('[data-role="recordings"]');
     listObject.remove();
+
     const container = $('body > div.container');
-    container.append('<div id="buttons" style="margin: 2em 0">');
+    container.append('<div id="buttons" style="margin: 2em 0"></div>');
+
     const buttons = $('body > div.container > #buttons');
-    buttons.append('<button id="play"><span class="material-icons">play_circle_outline</span></button></div>');
+    buttons.append('<button id="play"><span class="material-icons">play_circle_outline</span></button>');
+
+    const downloadButton = document.createElement('button');
+    downloadButton.id = "download";
+
+    const downloadButtonText = document.createElement('span');
+    downloadButtonText.className = "material-icons";
+    downloadButtonText.textContent = 'file_download';
+    downloadButton.append(downloadButtonText);
+    buttons.append(downloadButton);
     container.append('<div id="waveform"></div>');
+    downloadButton.onclick = () => {
+        fetch(audioSrc)
+        .then(response => response.blob())
+        .then(blob => {
+            var url = URL.createObjectURL(blob);
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = 'audio_file.wav';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        })
+        .catch(error => {
+            console.error('Error downloading audio:', error);
+        });
+    };
 }
 
 var ws;
@@ -106,7 +135,7 @@ function generateEqualizer(audio){
     equalizer.appendChild(divSlider)
  }
 
- function generateOtherOptions() {
+function generateOtherOptions() {
     const fieldset = document.createElement('fieldset');
     $('body > div.container').append(fieldset);
     $('body > div.container > fieldset').append('<legend>Options</legend>');
@@ -157,7 +186,7 @@ jQuery(document).ready(function () {
         audio.controls = true;
         audio.src = audioSrc;
 
-        beginEditing();
+        beginEditing(audioSrc);
         generateWaveSurfer(audio);
         generateEqualizer(audio);
         generateOtherOptions();
